@@ -98,6 +98,13 @@ if (-not (Is-GitInstalled)) {
     Write-Host " Git has been installed successfully. " -ForegroundColor $textBlack -Background $success
 }
 
+function Install-Program {
+    param (
+        [string]$programName
+    )
+    winget install --id $programName
+}
+
 # Primera seccion: Seleccion de tareas
 $tareas = @(
     "Install a new environment",
@@ -106,5 +113,45 @@ $tareas = @(
 )
 
 $selectedTareas = Show-SelectionMenu -optionList $tareas -prompt "Select the areas you want to perform"
+
+# Si selecciona "Instalacion completa", automaticamente selecciona todas las opciones
+if ($selectedTareas -contains "Install a new environment") {
+    $selectedTareas = @("Install programs", "Install and customize terminal")
+}
+
+# Segunda seccion: Seleccion de programas si "Instalar programas" esta seleccionado
+if($selectedTareas -contains "Install programs") {
+    $programs = @(
+        "Microsoft.VisualStudioCode",
+        "CoreyButler.NVMforWindows",
+        "Microsoft.WindowsTerminal",
+        "JanDeDobbeleer.OhMyPosh",
+        "Microsoft.Powershell",
+        "Python.Python.3.12",
+        "Discord.Discord",
+        "Neovim.Neovim",
+        "Google.Chrome",
+        "Valve.Steam",
+        "Brave.Brave",
+        "Chocolatey.Chocolatey",
+        "Obsidian.Obsidian"
+    )
+
+    $selectedPrograms = Show-SelectionMenu -optionList $programs -prompt "Select the programs you want to install"
+    
+    foreach ($program in $selectedPrograms) {
+        Clear-Host
+        Write-Host " RUNNING CONFIGURATION SCRIPT" -ForegroundColor $textBlack -Background $primary
+        Write-Host " "
+        Write-Host "`t` ■ Instalando $program " -ForegroundColor $textWhite -Background Blue
+        Write-Host " "
+        Install-Program -programName $program
+    }
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " ● Programas Instalados " -ForegroundColor $textBlack -Background $success
+}
+
 
 Write-Host " Completed tasks close this terminal and start a new. " -ForegroundColor $textBlack -Background $warning
