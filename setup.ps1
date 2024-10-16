@@ -109,6 +109,7 @@ function Install-Program {
 $tareas = @(
     "Install a new environment",
     "Install programs",
+    "Install and configure Neovim",
     "Install and customize terminal"
 )
 
@@ -116,7 +117,7 @@ $selectedTareas = Show-SelectionMenu -optionList $tareas -prompt "Select the are
 
 # Si selecciona "Instalacion completa", automaticamente selecciona todas las opciones
 if ($selectedTareas -contains "Install a new environment") {
-    $selectedTareas = @("Install programs", "Install and customize terminal")
+    $selectedTareas = @("Install programs", "Install and configure Neovim", "Install and customize terminal")
 }
 
 # Segunda seccion: Seleccion de programas si "Instalar programas" esta seleccionado
@@ -150,10 +151,91 @@ if($selectedTareas -contains "Install programs") {
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
 }
 
-# Ejemplo de configuración e instalación de terminal si está seleccionado
+# Funcion para configurar neovim
+if ($selectedTareas -contains "Install and configure Neovim") {
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " "
+    Write-Host "`t` Checking and installing requirements for Neovim... " -ForegroundColor $textBlack -Background $secondary
+    Write-Host " "
+    try {
+        scoop -v
+        Clear-Host
+        Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+        Write-Host " "
+        Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+        Write-Host " "
+        Write-Host " Checking and installing requirements for Neovim... " -ForegroundColor $textBlack -Background $secondary
+        Write-Host " "
+        Write-Host "`t` Installing GCC using Scoop..." -ForegroundColor $textWhite -BackgroundColor Blue
+        Write-Host " "
+        scoop install gcc
+    } catch {
+        Clear-Host
+        Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+        Write-Host " "
+        Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+        Write-Host " "
+        Write-Host " Checking and installing requirements for Neovim... " -ForegroundColor $textBlack -Background $secondary
+        Write-Host " "
+        Write-Host "`t` Scoop not found. Installing Scoop... " -ForegroundColor $textWhite -BackgroundColor Blue
+        Write-Host " "
+        Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+        Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+        Write-Host " "
+        # Después de instalar Scoop, instalar GCC también
+        Write-Host "`t` Installing GCC using Scoop... " -ForegroundColor $textWhite -BackgroundColor Blue
+        Write-Host " "
+        scoop install gcc
+    }
+    
+    # Verificar si ripgrep está instalado usando winget
+    $rgStatus = winget list --id BurntSushi.ripgrep.MSVC -q
+    if ($rgStatus -eq $null) {
+        Clear-Host
+        Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+        Write-Host " "
+        Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+        Write-Host " "
+        Write-Host "`t` Checking and installing requirements for Neovim... " -ForegroundColor $textBlack -Background $secondary
+        Write-Host " "
+        Write-Host "`t` ripgrep not found. Installing ripgrep... " -ForegroundColor $textWhite -BackgroundColor Blue
+        winget install BurntSushi.ripgrep.MSVC
+    } else {
+        Clear-Host
+        Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+        Write-Host " "
+        Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+        Write-Host " "
+        Write-Host "`t` - Required programs installed successfully." -ForegroundColor $textBlack -BackgroundColor $warning
+
+    }
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " "
+    Write-Host "`t` - Required programs installed successfully." -ForegroundColor $textBlack -BackgroundColor $success
+
+    # Copiar configuración de Neovim desde .dotfiles
+    $sourcePath = "$HOME\.dotfiles\common\nvim"
+    $destinationPath = "$env:LOCALAPPDATA\nvim"
+
+    if (Test-Path $sourcePath) {
+        Copy-Item -Recurse -Path $sourcePath -Destination $destinationPath -Force
+        Write-Host "`t` - Neovim configuration copied successfully." -ForegroundColor $textBlack -BackgroundColor $success
+    } else {
+        Write-Host "`t` - Error: Neovim configuration folder not found in .dotfiles." -ForegroundColor $textWhite -BackgroundColor Red
+    }
+    Start-Sleep -Seconds 2
+}
+
+# Configuración e instalación de terminal si está seleccionado
 if ($selectedTareas -contains "Install and customize terminal") {
 
     & $gitPath $clone $repo $ruteClone
@@ -161,7 +243,8 @@ if ($selectedTareas -contains "Install and customize terminal") {
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Neovim configuration IDE. " -ForegroundColor $textBlack -Background $success
     Write-Host " "
     Write-Host "`t` Installing Terminal Icons... " -ForegroundColor $textBlack -Background $secondary
 
@@ -171,8 +254,9 @@ if ($selectedTareas -contains "Install and customize terminal") {
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT" -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Neovim configuration IDE. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
     Write-Host " "
     Write-Host "`t` Installing JetBrainsMono NerdFont... " -ForegroundColor $textBlack -Background $secondary
 
@@ -182,9 +266,10 @@ if ($selectedTareas -contains "Install and customize terminal") {
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Neovim configuration IDE. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
     Write-Host " "
     Write-Host "`t` Configuring files... " -ForegroundColor $textBlack -Background $secondary
 
@@ -192,10 +277,11 @@ if ($selectedTareas -contains "Install and customize terminal") {
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
-    Write-Host " ● File configs required configured " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Neovim configuration IDE. " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " - Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
+    Write-Host " - File configs required configured " -ForegroundColor $textBlack -Background $success
     # Copy Windows Terminal configuration
     $terminalConfigPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
     if (-Not (Test-Path -Path $terminalConfigPath)) {
@@ -221,4 +307,5 @@ if ($selectedTareas -contains "Install and customize terminal") {
     
 }
 
+Write-Host " "
 Write-Host " Completed tasks close this terminal and start a new. " -ForegroundColor $textBlack -Background $warning
