@@ -143,15 +143,82 @@ if($selectedTareas -contains "Install programs") {
         Clear-Host
         Write-Host " RUNNING CONFIGURATION SCRIPT" -ForegroundColor $textBlack -Background $primary
         Write-Host " "
-        Write-Host "`t` ■ Instalando $program " -ForegroundColor $textWhite -Background Blue
+        Write-Host "`t` ■ Installing $program " -ForegroundColor $textWhite -Background Blue
         Write-Host " "
         Install-Program -programName $program
     }
     Clear-Host
     Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
     Write-Host " "
-    Write-Host " ● Programas Instalados " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
 }
 
+# Ejemplo de configuración e instalación de terminal si está seleccionado
+if ($selectedTareas -contains "Install and customize terminal") {
+
+    & $gitPath $clone $repo $ruteClone
+
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " "
+    Write-Host "`t` Installing Terminal Icons... " -ForegroundColor $textBlack -Background $secondary
+
+    # Terminal-Icons install
+    Start-Process pwsh -ArgumentList '-NoProfile -Command "Install-Module -Name Terminal-Icons -Repository PSGallery -Force"' -Wait
+
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT" -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " "
+    Write-Host "`t` Installing JetBrainsMono NerdFont... " -ForegroundColor $textBlack -Background $secondary
+
+    # oh-my-posh font install
+    Start-Process pwsh -ArgumentList "-NoProfile -Command `"$env:LOCALAPPDATA\Programs\oh-my-posh\bin\oh-my-posh.exe font install JetBrainsMono`"" -Wait
+
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
+    Write-Host " "
+    Write-Host "`t` Configuring files... " -ForegroundColor $textBlack -Background $secondary
+
+    Start-Sleep -Seconds 2
+    Clear-Host
+    Write-Host " RUNNING CONFIGURATION SCRIPT " -ForegroundColor $textBlack -Background $primary
+    Write-Host " "
+    Write-Host " ● Programs installed succesfully. " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Terminal Icons Installed " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● Oh-my-posh installed and configured fonts " -ForegroundColor $textBlack -Background $success
+    Write-Host " ● File configs required configured " -ForegroundColor $textBlack -Background $success
+    # Copy Windows Terminal configuration
+    $terminalConfigPath = "$env:LOCALAPPDATA\Packages\Microsoft.WindowsTerminal_8wekyb3d8bbwe\LocalState"
+    if (-Not (Test-Path -Path $terminalConfigPath)) {
+        New-Item -ItemType Directory -Force -Path $terminalConfigPath
+    }
+
+    Copy-Item -Path "$env:USERPROFILE\.dotfiles\windows\terminal\settings.json" -Destination "$terminalConfigPath\settings.json" -Force
+
+    # Copy PowerShell configuration
+    # Asigna manualmente la ruta correcta a la variable $PROFILE
+    $PROFILE = "$env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+
+    # Obtiene el directorio del perfil
+        $profileDirectory = Split-Path -Path $PROFILE -Parent
+    
+    # Verifica si el directorio del perfil no existe y lo crea si es necesario
+    if (-Not (Test-Path -Path $profileDirectory)) {
+        New-Item -ItemType Directory -Force -Path $profileDirectory
+    }
+    
+    # Copia el archivo de perfil de PowerShell al destino especificado en $PROFILE
+    Copy-Item -Path "$env:USERPROFILE\.dotfiles\windows\powershell\Microsoft.PowerShell_profile.ps1" -Destination $PROFILE -Force
+    
+}
 
 Write-Host " Completed tasks close this terminal and start a new. " -ForegroundColor $textBlack -Background $warning
