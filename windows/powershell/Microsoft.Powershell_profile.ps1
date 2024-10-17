@@ -1,7 +1,7 @@
 # powershell startup parameters
 
 # oh-my-posh prompt call
-oh-my-posh init pwsh --config ~/.dotifles/common/ohmyposh/r105.omp.json | Invoke-Expression
+oh-my-posh init pwsh --config ~/.dotfiles/common/ohmyposh/r105.omp.json | Invoke-Expression
 
 # Terminal icons import
 Import-Module Terminal-Icons
