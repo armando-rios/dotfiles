@@ -75,14 +75,17 @@ for vt in range(1, 8):
 # groups = [Group(i) for i in "12345678"]
 
 groups = [
-    Group(" "),
-    Group(" "),
-    Group("󰘐 "),
-    Group(" "),
+    #Group("  "),
+    Group("   Home "),
+    Group("   Firefox "),
+    Group("   Neovim "),
+    #Group(" 󰘐 "),
+    #Group("   Other "),
+    Group("   Burger "),
 ]
 
 # Crear un conjunto de teclas para cambiar entre grupos
-for i, group in zip(["1", "2", "3", "4"], groups):
+for i, group in zip(["1", "2", "3", "4", "5"], groups):
     keys.append(Key([mod], i, lazy.group[group.name].toscreen()))
     keys.append(Key([mod, "shift"], i, lazy.window.togroup(group.name)))
 
@@ -127,7 +130,7 @@ screens = [
             ],
             30,
             background="#1e1e2e",
-            opacity=0.9,
+            opacity=0.7,
 
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
