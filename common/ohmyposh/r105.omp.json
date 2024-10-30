@@ -27,7 +27,7 @@
             "macos": "\ue24d"
           },
           "style": "plain",
-          "template": " {{.Icon}} {{if .WSL}} (WSL){{end}} ",
+          "template": " {{.Icon}} {{if .WSL}} 󰌽{{end}} ",
           "type": "os"
         },
         {
