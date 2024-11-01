@@ -20,7 +20,6 @@ return  {
           height = 30,
           winblend = 0,
         },
-        shell = 'pwsh'
       }
     end,
  }
