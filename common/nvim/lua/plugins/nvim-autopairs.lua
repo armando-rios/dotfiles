@@ -4,7 +4,7 @@ return {
     dependencies = {
         "hrsh7th/nvim-cmp",
     },
-    config = function ()
+    config = function()
         local autopairs = require("nvim-autopairs")
         autopairs.setup({
             check_ts = true,
@@ -17,6 +17,6 @@ return {
 
         local cmp = require("cmp")
 
-        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_dode())
+        cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end
 }
