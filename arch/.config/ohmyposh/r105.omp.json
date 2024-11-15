@@ -8,7 +8,7 @@
     {
       "type": "prompt",
       "alignment": "left",
-      "newline": false,
+      "newline": false  ,
       "segments": [
         {
           "background": "transparent",

@@ -1,0 +1,10 @@
+{
+  "extras": [
+    "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.ai.supermaven"
+  ],
+  "news": {
+    "NEWS.md": "7107"
+  },
+  "version": 7
+}

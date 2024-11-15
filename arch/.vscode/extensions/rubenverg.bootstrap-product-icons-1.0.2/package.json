@@ -1,0 +1,41 @@
+{
+	"name": "bootstrap-product-icons",
+	"displayName": "Bootstrap Product Icons",
+	"description": "Adds Bootstrap Icons as product icons for Code.",
+	"version": "1.0.2",
+	"publisher": "rubenverg",
+	"repository": {
+		"url": "https://github.com/RubenVerg/bootstrap-product-icons.git",
+		"type": "git"
+	},
+	"icon": "icon.png",
+	"engines": {
+		"vscode": "^1.53.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"contributes": {
+		"productIconThemes": [
+			{
+				"id": "bootstrap-product-icons",
+				"label": "Bootstrap Icons",
+				"path": "./icons/bootstrap-product-icon-theme.json"
+			}
+		]
+	},
+	"license": "MIT",
+	"__metadata": {
+		"id": "5f945770-8d36-41b3-9782-0379c08335f7",
+		"publisherId": "50116368-ec5c-4fca-bb2f-37712dc040ea",
+		"publisherDisplayName": "RubenVerg",
+		"targetPlatform": "undefined",
+		"isApplicationScoped": false,
+		"isPreReleaseVersion": false,
+		"hasPreReleaseVersion": false,
+		"installedTimestamp": 1726330719495,
+		"pinned": false,
+		"preRelease": false,
+		"source": "gallery"
+	}
+}
