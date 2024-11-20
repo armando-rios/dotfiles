@@ -59,7 +59,7 @@
           "foreground": "#3C873A",
           "properties": {
             "fetch_package_manager": true,
-            "pnpm_icon": " <#da6933>\udb83\udd46</> ",
+            "pnpm_icon": " <#da6933></> ",
             "yarn_icon": " <#348cba>\ue6a7</> ",
             "npm_icon": " <#e21515>\ue5fa</> "
           },
