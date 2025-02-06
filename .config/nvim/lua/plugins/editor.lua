@@ -63,11 +63,13 @@ return {
     ---@module 'oil'
     ---@type oil.SetupOpts
     opts = {
-      dependencies = { { "echasnovski/mini.icons", opts = {} } },
       view_options = {
         show_hidden = true
       }
-    }
+    },
+    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    lazy = false
   },
   {
     "nvim-neo-tree/neo-tree.nvim",

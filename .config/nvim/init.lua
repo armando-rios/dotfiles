@@ -1,5 +1,3 @@
--- Neovim started config
--- Bootstrap lazy.nvim
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
@@ -8,8 +6,7 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
     "git",
     "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
+    "--filter=blob:none", "https://github.com/folke/lazy.nvim.git",
     "--branch=stable",
     lazypath,
   })
@@ -21,9 +18,8 @@ require("lazy").setup({
   spec = {
     { import = "plugins" }
   },
-  -- install = { colorscheme = { "habamax" } },
-  install = { colorscheme = { "kanagawa" } },
-  checker = { enabled = true },
+  install = { colorscheme = { "habamax" } },
+  checker = { enabled = false },
 })
 
 -- Load basic configs

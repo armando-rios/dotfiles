@@ -30,6 +30,9 @@ map({ 'n', 'v' }, '<leader>oln', '<cmd>ObsidianLinkNew<cr>', opts)
 map({ 'n', 'v' }, '<leader>ol', '<cmd>ObsidianLink<cr>', opts)
 map({ 'n', 'v' }, '<leader>oi', '<cmd>ObsidianPasteImg<cr>', opts)
 
+-- REST
+map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', opts)
+
 -- which key
 
 local wk = require("which-key")
@@ -42,4 +45,5 @@ wk.add({
   { "<leader>g",  desc = "Live Grep" },
   { "<leader>b",  desc = "Find Buffers" },
   { "<leader>fc", desc = "Change Colorscheme" },
+  { "<leader>rr", desc = "Rest run (API)" },
 })
