@@ -6,4 +6,7 @@ return {
       vim.g.copilot_enabled = 0
     end
   },
+  {
+    'Exafunction/codeium.vim',
+  }
 }
