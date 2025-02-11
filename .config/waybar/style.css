@@ -1,3 +1,5 @@
+@import "mocha.css";
+
 * {
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
@@ -9,7 +11,7 @@ window#waybar {
   color: white;
   /* border: 2px solid #cba6f7; */
   border: 2px solid #1e1e2e;
-  border-color: #1e1e2e #cba6f7;
+  border-color: #1e1e2e @mauve;
   /* border-image: linear-gradient(to right, #cba6f7, #1e1e2e) 1; */
   border-radius: 10px;
 }
@@ -37,7 +39,6 @@ window#waybar {
   padding-right: 4px;
   /*   animation: ws_normal 20s ease-in-out 1; */
 }
-
 
 #workspaces button.active {
   color: #cba6f7;
@@ -85,19 +86,34 @@ window#waybar {
   background-color: #A6E3A2;
 }
 
+#network {
+  color: @peach;
+  margin: 0 6px
+}
+
 #pulseaudio {
+  color: @green;
   margin: 0 12px 0 6px
 }
 
 #cpu {
+  color: @red;
   margin: 0 6px
 }
 
 #memory {
+  color: @blue;
   margin: 0 6px
 }
 
 #clock {
+  color: @pink;
   padding: 0 8px 0 0;
   margin: 0 0 0 6px
+}
+
+#custom-power {
+  color: @mauve;
+  margin: 0 6px;
+  background: transparent;
 }

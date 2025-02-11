@@ -1,8 +1,7 @@
 {
-
   // source from header module
-  "layer": "top", // Waybar at top layer
-  "position": "top", // Waybar position (top|bottom|left|right)
+  "layer": "top", 
+  "position": "top", 
   "margin-left": 10,
   "margin-right": 10,
   "margin-top": 7,
@@ -10,19 +9,41 @@
   "reload_style_on_change": true,
 
   // Choose the order of the modules
-  "modules-left": ["custom/smallspacer","hyprland/workspaces","custom/spacer","mpris"],
-  "modules-center": ["custom/padd","custom/l_end","custom/r_end","hyprland/window","custom/padd"],
-  "modules-right": ["custom/padd","custom/l_end","group/expand","network","group/expand-3","group/expand-2","group/expand-4","memory","cpu","clock","custom/notification","custom/padd"],
-
+  "modules-left": [
+    "custom/smallspacer",
+    "hyprland/workspaces",
+    "custom/spacer",
+    "mpris"
+  ],
+  "modules-center": [
+    "custom/padd",
+    "custom/l_end",
+    "custom/r_end",
+    "hyprland/window",
+    "custom/padd"
+  ],
+  "modules-right": [
+    "custom/padd",
+    "custom/l_end",
+    "group/expand",
+    "network",
+    "group/expand-3",
+    "group/expand-2",
+    "group/expand-4",
+    "memory",
+    "cpu",
+    "clock",
+    "custom/power",
+    "custom/notification",
+    "custom/padd"
+  ],
 
   "hyprland/workspaces": {
     "format": "{icon}",
     "format-icons": {
-    "default": "",
-    "active": "",
-    //"default": "○",
-    //"default": "●"
-    },
+      "default": "",
+      "active": ""
+    }
   },
 
   "mpris": {
@@ -34,16 +55,14 @@
       "mpv": "🎵"
     },
     "status-icons": {
-      "paused": "▶" 
-    },
-    // "ignored-players": ["firefox"]
+      "paused": "▶"
+    }
   },
 
   "network": {
     "tooltip": true,
     "format-wifi": "{icon} ",
     "format-icons": ["󰤟 ", "󰤢 ", "󰤥 "],
-  //  "format-wifi": "<i class='fa-solid fa-wifi-slash'></i>",
     "rotate": 0,
     "format-ethernet": "󰈀 ",
     "tooltip-format": "Network: <big><b>{essid}</b></big>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
@@ -51,9 +70,8 @@
     "format-disconnected": " ",
     "tooltip-format-disconnected": "Disconnected",
     "on-click": "/usr/local/bin/ags -t ControlPanel",
-    "interval": 2,
+    "interval": 2
   },
-
 
   "clock": {
     "format": "{:%I:%M %p}",
@@ -66,16 +84,19 @@
       "on-scroll": 1,
       "on-click-right": "mode",
       "format": {
-          "months": "<span color='#ffead3'><b>{}</b></span>",
-          "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
-          "today": "<span color='#ff6699'><b>{}</b></span>"
-        }
-    },
+        "months": "<span color='#ffead3'><b>{}</b></span>",
+        "weekdays": "<span color='#ffcc66'><b>{}</b></span>",
+        "today": "<span color='#ff6699'><b>{}</b></span>"
+      }
+    }
   },
+
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
-    "format-icons": ["", "", "", "", "", "", "", "", ""]
+    "format-icons": [
+      "", "", "", "", "", "", "", "", ""
+    ]
   },
 
   "battery": {
@@ -87,30 +108,35 @@
     "format-charging": "",
     "format-plugged": "",
     "format-alt": "{icon}",
-    "format-icons": ["", "",  "", "", "", "", "", "", "", "", "", ""]
+    "format-icons": [
+      "", "", "", "", "", "", "", "", "", "", "", ""
+    ]
   },
 
   "memory": {
     "interval": 1,
-    "format": "{icon}",
-    "format": " {}%",
+    "format": " {}%"
   },
 
   "cpu": {
     "interval": 1,
-    "format": " {}%",
+    "format": " {}%"
   },
 
-    "group/expand-3": {
-     "orientation": "horizontal",
-     "drawer": {
-         "transition-duration": 600,
-         "children-class": "not-power",
-       "transition-to-left": true,
-         "click-to-reveal": true
-     },
-     "modules": ["pulseaudio","pulseaudio/slider"]
-   },
+  "group/expand-3": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true,
+      "click-to-reveal": true
+    },
+    "modules": [
+      "pulseaudio",
+      "pulseaudio/slider"
+    ]
+  },
+
   "pulseaudio": {
     "format": "{icon}",
     "rotate": 0,
@@ -128,23 +154,22 @@
     }
   },
 
+  "custom/power": {
+    "on-click": "wlogout &",
+    "format": " "
+  },
+
   "pulseaudio/slider": {
     "min": 5,
     "max": 100,
     "rotate": 0,
     "device": "pulseaudio",
-    "scroll-step": 1,
+    "scroll-step": 1
   },
 
   "custom/lock": {
     "tooltip": false,
     "on-click": "sh -c '(sleep 0.5s; swaylock --grace 0)' & disown",
-    "format": "",
+    "format": ""
   },
-
-  "custom/power": {
-    "tooltip": false,
-    "on-click": "wlogout &",
-    "format": "襤"
-  }
 }
