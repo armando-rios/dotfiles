@@ -59,6 +59,28 @@
     }
   },
 
+"tray": {
+  "icon-size": 16,
+  "rotate": 0,
+  "spacing": 3
+},
+
+"group/expand": {
+  "orientation": "horizontal",
+  "drawer": {
+    "transition-duration": 600,
+    "children-class": "not-power",
+    "transition-to-left": true,
+    //  "click-to-reveal": true
+  },
+  "modules": ["custom/menu","custom/spacer","tray"]
+},
+
+"custom/menu":{
+  "format": "󰅃",
+  "rotate": 90,
+},
+
   "network": {
     "tooltip": true,
     "format-wifi": "{icon} ",
