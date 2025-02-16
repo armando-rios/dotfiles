@@ -87,12 +87,18 @@ window#waybar {
 
 #network {
   color: @peach;
-  margin: 0 6px
 }
 
 #pulseaudio {
+  font-size: 18px;
   color: @green;
   margin: 0 6px 0 0;
+}
+
+#backlight {
+  font-size: 18px;
+  color: @teal;
+  margin: 0 6px 0 6px;
 }
 
 #cpu {
