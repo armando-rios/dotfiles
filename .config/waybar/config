@@ -145,6 +145,17 @@
     "format": " {}%"
   },
 
+  "group/expand-2": {
+     "orientation": "horizontal",
+     "drawer": {
+         "transition-duration": 600,
+         "children-class": "not-power",
+       "transition-to-left": true,
+         "click-to-reveal": true
+     },
+     "modules": ["backlight","backlight/slider","custom/smallspacer","custom/led"]
+  },
+
   "group/expand-3": {
     "orientation": "horizontal",
     "drawer": {
@@ -179,6 +190,14 @@
   "custom/power": {
     "on-click": "wlogout &",
     "format": " "
+  },
+
+  "backlight/slider": {
+    "min": 5,
+    "max": 100,
+    "rotate": 0,
+    "device": "intel_backlight",
+    "scroll-step": 1,
   },
 
   "pulseaudio/slider": {
