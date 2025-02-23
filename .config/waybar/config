@@ -130,9 +130,7 @@
     "format-charging": "󰂄",
     "format-plugged": "󰂃",
     "format-alt": "{icon}",
-    "format-icons": [
-      "󰂎", 󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
-    ]
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
   },
 
   "memory": {
