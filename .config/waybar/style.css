@@ -27,7 +27,6 @@ window#waybar {
   padding-top: 1px;
 }
 
-
 #workspaces button {
   /* background: rgba(23, 23, 23, 0.0); */
   color: #a6e3a1;
@@ -52,7 +51,7 @@ window#waybar {
   background: none;
   color: #cba6f7;
   animation: ws_hover 20s ease-in-out 1;
-  transition: all 0.5s cubic-bezier(.55, -0.68, .48, 1.682);
+  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
 #mpris {
@@ -66,9 +65,9 @@ window#waybar {
 }
 
 #pulseaudio-slider slider {
-  background: #A1BDCE;
+  background: #a1bdce;
   box-shadow: none;
-  margin-right: 6px;
+  margin-right: 5px;
 }
 
 #backlight-slider trough,
@@ -90,35 +89,36 @@ window#waybar {
 }
 
 #pulseaudio {
-  font-size: 18px;
   color: @green;
-  margin: 0 6px 0 0;
+  margin: 0 5px;
 }
 
 #backlight {
-  font-size: 18px;
   color: @teal;
-  margin: 0 6px 0 6px;
+  margin: 0 5px;
 }
 
 #cpu {
   color: @red;
-  margin: 0 6px
+  margin: 0 5px;
 }
 
 #memory {
   color: @blue;
-  margin: 0 6px
+  margin: 0 5px;
 }
 
 #clock {
   color: @pink;
   padding: 0 8px 0 0;
-  margin: 0 0 0 6px
+  margin: 0 5px;
 }
 
 #custom-power {
   color: @mauve;
-  margin: 0 6px;
   background: transparent;
+}
+
+#custom-menu {
+  margin: 0 5px;
 }

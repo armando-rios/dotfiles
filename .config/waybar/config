@@ -96,7 +96,7 @@
   },
 
   "clock": {
-    "format": "{:%I:%M %p}",
+    "format": "{:%I:%M}",
     "rotate": 0,
     "on-click": "/usr/local/bin/ags -t ActivityCenter",
     "tooltip-format": "<tt>{calendar}</tt>",
@@ -183,7 +183,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": ["", "", ""]
+      "default": ["", "", " "]
     }
   },
 
