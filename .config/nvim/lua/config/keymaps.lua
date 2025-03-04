@@ -8,30 +8,21 @@ map("n", "<leader>Q", "<cmd>qa!<cr>", opts)
 map("n", "<leader>e", "<cmd>Oil<cr>", opts)
 map("n", "<leader>E", "<cmd>Neotree toggle<cr>", opts)
 
--- Telescope
-local telescope = require('telescope.builtin')
-map("n", "<leader>fg", telescope.live_grep, opts)
-map("n", "<leader>ff", telescope.find_files, opts)
-map("n", "<leader>fb", telescope.buffers, opts)
-map("n", "<leader>fn", ":Telescope notify<cr>", opts)
-map("n", "<leader>fc", telescope.colorscheme, opts)
-
 -- Obsidian
-
-map({ 'n', 'v' }, '<leader>ob', '<cmd>ObsidianOpen<cr>', opts)
-map({ 'n', 'v' }, '<leader>of', '<cmd>ObsidianFollowLink<cr>', opts)
-map({ 'n', 'v' }, '<leader>on', '<cmd>ObsidianNew<cr>', opts)
-map({ 'n', 'v' }, '<leader>ont', '<cmd>ObsidianNewFromTemplate<cr>', opts)
-map({ 'n', 'v' }, '<leader>od', '<cmd>ObsidianToday<cr>', opts)
-map({ 'n', 'v' }, '<leader>oy', '<cmd>ObsidianYesterday<cr>', opts)
-map({ 'n', 'v' }, '<leader>ot', '<cmd>ObsidianTomorrow<cr>', opts)
-map({ 'n', 'v' }, '<leader>op', '<cmd>ObsidianPreview<cr>', opts)
-map({ 'n', 'v' }, '<leader>oln', '<cmd>ObsidianLinkNew<cr>', opts)
-map({ 'n', 'v' }, '<leader>ol', '<cmd>ObsidianLink<cr>', opts)
-map({ 'n', 'v' }, '<leader>oi', '<cmd>ObsidianPasteImg<cr>', opts)
+map({ "n", "v" }, "<leader>ob", "<cmd>ObsidianOpen<cr>", opts)
+map({ "n", "v" }, "<leader>of", "<cmd>ObsidianFollowLink<cr>", opts)
+map({ "n", "v" }, "<leader>on", "<cmd>ObsidianNew<cr>", opts)
+map({ "n", "v" }, "<leader>ont", "<cmd>ObsidianNewFromTemplate<cr>", opts)
+map({ "n", "v" }, "<leader>od", "<cmd>ObsidianToday<cr>", opts)
+map({ "n", "v" }, "<leader>oy", "<cmd>ObsidianYesterday<cr>", opts)
+map({ "n", "v" }, "<leader>ot", "<cmd>ObsidianTomorrow<cr>", opts)
+map({ "n", "v" }, "<leader>op", "<cmd>ObsidianPreview<cr>", opts)
+map({ "n", "v" }, "<leader>oln", "<cmd>ObsidianLinkNew<cr>", opts)
+map({ "n", "v" }, "<leader>ol", "<cmd>ObsidianLink<cr>", opts)
+map({ "n", "v" }, "<leader>oi", "<cmd>ObsidianPasteImg<cr>", opts)
 
 -- REST
-map({ 'n', 'v' }, '<leader>rr', ':Rest run<cr>', opts)
+map({ "n", "v" }, "<leader>rr", ":Rest run<cr>", opts)
 
 -- which key
 
@@ -47,3 +38,9 @@ wk.add({
   { "<leader>fc", desc = "Change Colorscheme" },
   { "<leader>rr", desc = "Rest run (API)" },
 })
+
+-- test
+
+map("v", "J", ":m '>+1<CR>gv=gv", opts)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
+map("x", "<leader>p", '"_dP', opts)
