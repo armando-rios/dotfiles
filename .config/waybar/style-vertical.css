@@ -3,48 +3,37 @@
 * {
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
+  padding: 1.5px;
 }
 
 window#waybar {
   background: rgba(30, 30, 46, 0.8);
   color: white;
-  /* border: 2px solid #cba6f7; */
   border: 2px solid #1e1e2e;
-  border-color: #1e1e2e @mauve;
-  /* border-image: linear-gradient(to right, #cba6f7, #1e1e2e) 1; */
+  border-color: @mauve #1e1e2e;
   border-radius: 10px;
 }
 
 #workspaces {
-  /* background: rgba(23, 23, 23, 0.0); */
   color: #888789;
   box-shadow: none;
   text-shadow: none;
   transition: 0.2s ease;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 1px;
+  padding: 4px 4px 4px 0px;
 }
 
 #workspaces button {
-  /* background: rgba(23, 23, 23, 0.0); */
   color: #a6e3a1;
   box-shadow: none;
   border: none;
   text-shadow: none;
   transition: 0.2s ease;
-  padding-left: 4px;
-  padding-right: 4px;
-  /*   animation: ws_normal 20s ease-in-out 1; */
 }
 
 #workspaces button.active {
   color: #cba6f7;
   transition: all 0.3s ease;
-  padding-left: 4px;
-  padding-right: 4px;
-  /*  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682); */
 }
 
 #workspaces button:hover {
@@ -54,26 +43,15 @@ window#waybar {
   transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
 }
 
-#mpris {
-  color: white;
-  animation: repeat;
-  animation-name: blink;
-  animation-duration: 3s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
 #pulseaudio-slider slider {
   background: #a1bdce;
   box-shadow: none;
-  margin-right: 5px;
 }
 
 #backlight-slider trough,
 #pulseaudio-slider trough {
-  min-width: 90px;
-  min-height: 10px;
+  min-width: 10px;
+  min-height: 90px;
   border-radius: 8px;
   background-color: @overlay0;
 }
@@ -86,40 +64,24 @@ window#waybar {
 
 #network {
   color: @peach;
+  padding-top: 4px;
 }
 
 #pulseaudio {
   color: @green;
-  margin: 0 5px;
+  padding-top: 4px;
 }
 
 #backlight {
   color: @teal;
-  margin: 0 5px;
-}
-
-#cpu {
-  color: @red;
-  margin: 0 5px;
-}
-
-#memory {
-  color: @blue;
-  margin: 0 5px;
+  padding-top: 4px;
 }
 
 #clock {
   color: @pink;
-  padding: 0 8px 0 0;
-  margin: 0 5px;
 }
 
 #custom-power {
   color: @mauve;
-  background: transparent;
-  margin: 0 5px 0 0;
-}
-
-#custom-menu {
-  margin: 0 5px;
+  padding: 4px 0 4px 8px;
 }
