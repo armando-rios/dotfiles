@@ -88,6 +88,11 @@ window#waybar {
   color: @peach;
 }
 
+#battery {
+  color: @sky;
+  margin: 0 5px;
+}
+
 #pulseaudio {
   color: @green;
   margin: 0 5px;
