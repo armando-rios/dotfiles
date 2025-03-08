@@ -24,17 +24,15 @@ return {
         },
         -- ensure these language parsers are installed
         ensure_installed = {
+          "astro",
           "json",
           "javascript",
           "typescript",
-          "tsx",
           "yaml",
           "html",
           "css",
-          "prisma",
           "markdown",
           "markdown_inline",
-          "svelte",
           "graphql",
           "bash",
           "lua",
@@ -67,8 +65,7 @@ return {
         show_hidden = true,
       },
     },
-    -- dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { { "echasnovski/mini.nvim", opts = {} } },
     lazy = false,
   },
 }

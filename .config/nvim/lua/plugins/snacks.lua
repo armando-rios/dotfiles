@@ -2,12 +2,12 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
-  ---@type snacks.Config
+  --@type snacks.Config
   opts = {
     terminal = {},
     lazygit = {},
-    picker = {},
     zen = {},
+    picker = {},
     dashboard = {
       preset = {
         header = [[
@@ -20,17 +20,46 @@ return {
         ]]
       }
     },
+    notify = { enabled = true },
+    ---@class snacks.notifier.Config
+    ---@field enabled? boolean
+    ---@field keep? fun(notif: snacks.notifier.Notif): boolean # global keep function
+    ---@field filter? fun(notif: snacks.notifier.Notif): boolean # filter our unwanted notifications (return false to hide)
+    notifier = {
+      timeout = 3000, -- default timeout in ms
+      width = { min = 100, max = 0.3 },
+      height = { min = 1, max = 0.6 },
+      margin = { top = 0, right = 1, bottom = 0 },
+      padding = true,              -- add 1 cell of left/right padding to the notification window
+      sort = { "level", "added" }, -- sort by level and time
+      level = vim.log.levels.TRACE,
+      icons = {
+        error = " ",
+        warn = " ",
+        info = " ",
+        debug = " ",
+        trace = " ",
+      },
+      keep = function(notif)
+        return vim.fn.getcmdpos() > 0
+      end,
+      ---@type snacks.notifier.style
+      style = "compact",
+      top_down = false,   -- place notifications from top to bottom
+      date_format = "%R", -- time format for notifications
+      ---@type string|boolean
+      more_format = " ↓ %d lines ",
+      refresh = 50, -- refresh at most every 50ms
+    },
     ---@class snacks.indent.Config
     ---@field enabled? boolean
     indent = {
       indent = {
         priority = 1,
-        enabled = true,       -- enable indent guides
+        enabled = true, -- enable indent guides
         char = "│",
-        only_scope = false,   -- only show indent guides of the scope
-        only_current = false, -- only show indent guides in the current window
-        -- hl = "SnacksIndent", ---@type string|string[] hl groups for indent guides
-        -- can be a list of hl groups to cycle through
+        only_scope = false,
+        only_current = false,
         hl = {
           "SnacksIndent1",
           "SnacksIndent2",
@@ -82,33 +111,40 @@ return {
       filter = function(buf)
         return vim.g.snacks_indent ~= false and vim.b[buf].snacks_indent ~= false and vim.bo[buf].buftype == ""
       end,
-    }
+    },
   },
   keys = {
-    -- lazygit
-    { "<leader>lg", function() Snacks.lazygit() end,                      desc = "Lazygit" },
-    -- terminal
-    { "<leader>t",  function() Snacks.terminal() end,                     desc = "Toggle Terminal" },
-    -- picker
-    { "<leader>fb", function() Snacks.picker.buffers() end,               desc = "Buffers" },
-    { "<leader>ff", function() Snacks.picker.files() end,                 desc = "Find Files" },
-    { "<leader>fg", function() Snacks.picker.grep() end,                  desc = "Grep" },
-    { "<leader>fp", function() Snacks.picker.projects() end,              desc = "Projects" },
-
-    { '<leader>s"', function() Snacks.picker.registers() end,             desc = "Registers" },
-    { '<leader>s/', function() Snacks.picker.search_history() end,        desc = "Search History" },
-    { "<leader>sd", function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
-    { "<leader>sm", function() Snacks.picker.marks() end,                 desc = "Marks" },
-    { "<leader>sp", function() Snacks.picker.lazy() end,                  desc = "Search for Plugin Spec" },
-    { "<leader>uC", function() Snacks.picker.colorschemes() end,          desc = "Colorschemes" },
+    -- Top Pickers & Explorer
+    { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
+    { "<leader>:",       function() Snacks.picker.command_history() end,       desc = "Command History" },
+    { "<leader>gn",      function() Snacks.picker.notifications() end,         desc = "Notification History" },
+    { "<leader>e",       function() Snacks.explorer() end,                     desc = "File Explorer" },
+    -- find and grep
+    { "<leader>fb",      function() Snacks.picker.buffers() end,               desc = "Buffers" },
+    { "<leader>ff",      function() Snacks.picker.files() end,                 desc = "Find Files" },
+    { "<leader>fp",      function() Snacks.picker.projects() end,              desc = "Projects" },
+    { "<leader>fg",      function() Snacks.picker.grep() end,                  desc = "Grep" },
+    { "<leader>fc",      function() Snacks.picker.colorschemes() end,          desc = "Colorschemes" },
+    -- search
+    { '<leader>s"',      function() Snacks.picker.registers() end,             desc = "Registers" },
+    { "<leader>sd",      function() Snacks.picker.diagnostics() end,           desc = "Diagnostics" },
+    { "<leader>sD",      function() Snacks.picker.diagnostics_buffer() end,    desc = "Buffer Diagnostics" },
+    { "<leader>sh",      function() Snacks.picker.help() end,                  desc = "Help Pages" },
+    { "<leader>sk",      function() Snacks.picker.keymaps() end,               desc = "Keymaps" },
+    { "<leader>sm",      function() Snacks.picker.marks() end,                 desc = "Marks" },
     -- LSP
-    { "gd",         function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
-    { "gD",         function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
-    { "gr",         function() Snacks.picker.lsp_references() end,        nowait = true,                  desc = "References" },
-    { "gI",         function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
-    { "gy",         function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
-    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
-    { "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
-    { "<leader>z",  function() Snacks.zen() end,                          desc = "Toggle Zen Mode" },
-  }
+    { "gd",              function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
+    { "gD",              function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },
+    { "gr",              function() Snacks.picker.lsp_references() end,        nowait = true,                  desc = "References" },
+    { "gI",              function() Snacks.picker.lsp_implementations() end,   desc = "Goto Implementation" },
+    { "gy",              function() Snacks.picker.lsp_type_definitions() end,  desc = "Goto T[y]pe Definition" },
+    { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+    { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+    -- Other
+    { "<leader>z",       function() Snacks.zen.zoom() end,                     desc = "Toggle Zoom" },
+    { "<leader>n",       function() Snacks.picker.notifications() end,         desc = "Notification History" },
+    { "<leader>cR",      function() Snacks.rename.rename_file() end,           desc = "Rename File" },
+    { "<leader>lg",      function() Snacks.lazygit() end,                      desc = "Lazygit" },
+    { "<c-/>",           function() Snacks.terminal() end,                     desc = "Toggle Terminal" },
+  },
 }

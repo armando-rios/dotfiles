@@ -6,6 +6,7 @@ return {
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
       {
+        "nvim-lua/plenary.nvim",
         "antosha417/nvim-lsp-file-operations",
         config = true,
       },
@@ -113,6 +114,7 @@ return {
           "emmet_ls",
           "pyright",
           "astro",
+          "marksman",
         },
         automatic_installation = true,
       })
@@ -126,12 +128,13 @@ return {
       conform.setup({
         formatters_by_ft = {
           json = { "prettier" },
-          javascript = { "eslint_d" },
+          javascript = { "prettier" },
           javascriptreact = { "prettier" },
           typescriptreact = { "prettier" },
           astro = { "prettier" },
           css = { "prettier" },
           html = { "prettier" },
+          markdown = { "prettier" },
           lua = { "stylua" },
           python = { "black" },
         },
@@ -165,7 +168,8 @@ return {
         javascriptreact = { "eslint_d" },
         typescriptreact = { "eslint_d" },
         astro = { "eslint_d" },
-        -- python = { "pylint" },
+        markdown = { "markdownlint" },
+        python = { "pylint" },
       }
       local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
       vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
