@@ -33,13 +33,10 @@ return {
       lspconfig["ts_ls"].setup({
         capabilities = capabilities,
         on_attach = on_attach,
+        handlers = {
+          ["textDocument/publishDiagnostics"] = function() end,
+        },
         filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Solo para archivos TypeScript y JavaScript
-      })
-
-      lspconfig["emmet_ls"].setup({
-        capabilities = capabilities,
-        on_attach = on_attach,
-        filetypes = { "javascript", "typescript", "typescriptreact", "javascriptreact" }, -- Solo para archivos con soporte de Emmet
       })
 
       lspconfig["astro"].setup({
@@ -111,7 +108,6 @@ return {
           "tailwindcss",
           "lua_ls",
           "graphql",
-          "emmet_ls",
           "pyright",
           "astro",
           "marksman",

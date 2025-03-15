@@ -1,6 +1,5 @@
 return {
   "rest-nvim/rest.nvim",
-  lazy = true,
   dependencies = {
     "nvim-treesitter/nvim-treesitter",
     opts = function(_, opts)
