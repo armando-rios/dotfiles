@@ -4,12 +4,19 @@ return {
     lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      "hrsh7th/cmp-nvim-lsp",
+      {
+        "hrsh7th/cmp-nvim-lsp",
+        lazy = true,
+      },
       {
         "nvim-lua/plenary.nvim",
-        "antosha417/nvim-lsp-file-operations",
-        config = true,
+        lazy = true,
       },
+      {
+        "antosha417/nvim-lsp-file-operations",
+        lazy = true,
+        config = true,
+      }
     },
     config = function()
       local lspconfig = require("lspconfig")
@@ -26,13 +33,11 @@ return {
 
       lspconfig["html"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         filetypes = { "html", "htm" }, -- Solo activado para archivos HTML
       })
 
       lspconfig["ts_ls"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         handlers = {
           ["textDocument/publishDiagnostics"] = function() end,
         },
@@ -41,7 +46,6 @@ return {
 
       lspconfig["astro"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         filetypes = { "astro" }, -- Solo activado para archivos Astro
         init_options = {
           typescript = {},
@@ -50,19 +54,16 @@ return {
 
       lspconfig["tailwindcss"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" }, -- Solo para archivos relacionados con Tailwind
       })
 
       lspconfig["cssls"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         filetypes = { "css", "scss", "less" }, -- Solo activado para archivos CSS, SCSS y LESS
       })
 
       lspconfig["marksman"].setup({
         capabilities = capabilities,
-        on_attach = on_attach,
         filetypes = { "markdown" }, -- Solo para archivos Markdown
       })
 
@@ -84,8 +85,11 @@ return {
   },
   {
     "williamboman/mason.nvim",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       "williamboman/mason-lspconfig.nvim",
+      lazy = true,
     },
     config = function()
       local mason = require("mason")
@@ -108,7 +112,6 @@ return {
           "tailwindcss",
           "lua_ls",
           "graphql",
-          "pyright",
           "astro",
           "marksman",
         },
@@ -118,6 +121,7 @@ return {
   },
   {
     "stevearc/conform.nvim",
+    lazy = true,
     event = { "BufReadPre", "BufNewFile" },
     config = function()
       local conform = require("conform")
@@ -151,6 +155,7 @@ return {
   },
   {
     "mfussenegger/nvim-lint",
+    lazy = true,
     event = {
       "BufReadPre",
       "BufNewFile",
