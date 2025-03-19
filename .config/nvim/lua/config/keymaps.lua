@@ -6,7 +6,6 @@ map("n", "<leader>q", "<cmd>bd<cr>", opts)
 map("n", "<leader>Q", "<cmd>qa!<cr>", opts)
 -- File explorer
 map("n", "<leader>e", "<cmd>Oil<cr>", opts)
-map("n", "<leader>E", "<cmd>Neotree toggle<cr>", opts)
 
 map({ 'n', 'v' }, '<leader>ob', '<cmd>ObsidianOpen<cr>', opts)
 map({ 'n', 'v' }, '<leader>of', '<cmd>ObsidianFollowLink<cr>', opts)
