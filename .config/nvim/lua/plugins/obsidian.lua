@@ -8,18 +8,18 @@ return {
     opts = {
       workspaces = {
         {
-          name = "ira",
-          path = "~/vault",
+          name = "IRA",
+          path = "~/Vault",
         },
       },
       completion = {
         nvim_cpm = true,
         min_char = 2,
       },
-      notes_subdir = "void",
-      new_notes_location = "void",
+      notes_subdir = "Void",
+      new_notes_location = "Void",
       attachments = {
-        img_folder = "files",
+        img_folder = "Files",
       },
       daily_notes = {
         folder = "Daily",
@@ -28,14 +28,14 @@ return {
         template = "Daily",
       },
       templates = {
-        folder = "templates",
+        folder = "Templates",
       },
       ui = { enable = false },
     },
   },
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+    -- dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
     opts = {
