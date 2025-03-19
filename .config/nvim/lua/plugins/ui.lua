@@ -34,13 +34,11 @@ return {
             enabled = true,
             virtual_text = {
               errors = { "italic" },
-
               hints = { "italic" },
               warnings = { "italic" },
               information = { "italic" },
               ok = { "italic" },
             },
-
             underlines = {
               errors = { "underline" },
               hints = { "underline" },
@@ -59,18 +57,6 @@ return {
         },
       })
       vim.cmd.colorscheme("catppuccin")
-    end,
-  },
-  {
-    "rebelot/kanagawa.nvim",
-    name = "kanagawa",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("kanagawa").setup({
-        transparent = true,
-        terminalColors = true,
-      })
     end,
   },
   {
