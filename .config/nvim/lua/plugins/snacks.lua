@@ -8,6 +8,7 @@ return {
     lazygit = {},
     zen = {},
     picker = {},
+    image = {},
     dashboard = {
       preset = {
         header = [[
