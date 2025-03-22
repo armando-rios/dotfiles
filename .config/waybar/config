@@ -13,7 +13,6 @@
     "custom/smallspacer",
     "hyprland/workspaces",
     "custom/spacer",
-    "mpris"
   ],
   "modules-center": [
     "custom/padd",
