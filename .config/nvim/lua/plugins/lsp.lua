@@ -38,9 +38,6 @@ return {
 
       lspconfig["ts_ls"].setup({
         capabilities = capabilities,
-        handlers = {
-          ["textDocument/publishDiagnostics"] = function() end,
-        },
         filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Solo para archivos TypeScript y JavaScript
       })
 
@@ -54,7 +51,7 @@ return {
 
       lspconfig["tailwindcss"].setup({
         capabilities = capabilities,
-        filetypes = { "html", "css", "javascript", "typescript", "jsx", "tsx" }, -- Solo para archivos relacionados con Tailwind
+        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" }, -- Solo para archivos relacionados con Tailwind
       })
 
       lspconfig["cssls"].setup({
