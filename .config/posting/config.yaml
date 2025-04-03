@@ -1,0 +1,5 @@
+theme: catppuccin-mocha
+layout: horizontal 
+heading:
+  visible: false 
+  show_host: false
