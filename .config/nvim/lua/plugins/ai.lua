@@ -8,6 +8,14 @@ return {
     end,
   },
   {
+    "olimorris/codecompanion.nvim",
+    config = true,
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  {
     "Exafunction/codeium.vim",
   },
 }
