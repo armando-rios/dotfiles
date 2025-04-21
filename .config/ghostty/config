@@ -1,0 +1,7 @@
+theme= catppuccin-mocha
+font-family = "JetBrainsMono Nerd Font"
+font-size = 16
+background-opacity = 0.9
+window-padding-x = 10
+window-padding-y = 10
+resize-overlay = never
