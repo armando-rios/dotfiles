@@ -126,6 +126,7 @@ return {
         formatters_by_ft = {
           json = { "prettier" },
           javascript = { "prettier" },
+          typescript = { "prettier" },
           javascriptreact = { "prettier" },
           typescriptreact = { "prettier" },
           astro = { "prettier" },
