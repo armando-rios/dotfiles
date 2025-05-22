@@ -51,7 +51,7 @@ return {
 
       lspconfig["tailwindcss"].setup({
         capabilities = capabilities,
-        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact" }, -- Solo para archivos relacionados con Tailwind
+        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }, -- Solo para archivos relacionados con Tailwind
       })
 
       lspconfig["cssls"].setup({
@@ -68,6 +68,11 @@ return {
         capabilities = capabilities,
         settings = {
           Lua = {
+            workspace = {
+              library = {
+                "${3rd}/love2d/library"
+              }
+            },
             diagnostics = {
               globals = { "vim" }, -- Ignora la advertencia sobre 'vim'
             },
