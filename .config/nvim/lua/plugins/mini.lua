@@ -13,6 +13,7 @@ return {
       },
     })
     require("mini.comment").setup({})
+    require('mini.surround').setup({})
     -- require("mini.completion").setup({
     --   lsp_completion = {
     --     source = "nvim_lsp"
