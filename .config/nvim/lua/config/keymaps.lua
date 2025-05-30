@@ -7,6 +7,7 @@ map("n", "<leader>Q", "<cmd>qa!<cr>", opts)
 -- File explorer
 map("n", "<leader>e", "<cmd>Oil<cr>", opts)
 
+map({ 'n', 'v' }, '<leader>ca', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 map({ 'n', 'v' }, '<leader>ob', '<cmd>ObsidianOpen<cr>', opts)
 map({ 'n', 'v' }, '<leader>of', '<cmd>ObsidianFollowLink<cr>', opts)
 map({ 'n', 'v' }, '<leader>on', '<cmd>ObsidianNew<cr>', opts)
