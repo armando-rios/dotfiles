@@ -52,6 +52,8 @@ return {
         left_pad = 2,
         lenguage_pad = 2,
       },
+      file_types = { "markdown", "Avante" },
     },
+    ft = { "markdown", "Avante" },
   },
 }
