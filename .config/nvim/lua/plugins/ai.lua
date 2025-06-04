@@ -5,8 +5,10 @@ return {
     version = false,
     opts = {
       provider = "copilot",
-      copilot = {
-        model = "gpt-4o", -- "claude-3.7-sonnet", "claude-3.5-sonnet"
+      providers = {
+        copilot = {
+          model = "gpt-4o", -- "claude-3.7-sonnet", "claude-3.5-sonnet"
+        },
       },
       cursor_applying_provider = "copilot",
       auto_suggestions_provider = "copilot",
@@ -19,7 +21,7 @@ return {
         enable_cursor_planning_mode = true, -- enable cursor planning mode!
         enable_token_counter = true,        -- enable token counter
       },
-      file_selector = {
+      selector = {
         provider = "snacks", -- Avoid native provider issues
         provider_opts = {},
       },
