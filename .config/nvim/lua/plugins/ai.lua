@@ -1,4 +1,18 @@
+local map = vim.keymap.set
+
 return {
+  {
+    "github/copilot.vim",
+    map("n", "<leader>ce", function()
+      vim.copilot_enable = true
+      vim.notify("Copilot enabled")
+    end, { desc = "Enable Copilot" }),
+    map("n", "<leader>cd", function()
+      vim.copilot_enable = false
+      vim.notify("Copilot disabled")
+    end, { desc = "Disable Copilot" }),
+
+  },
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
@@ -68,7 +82,6 @@ return {
     build = "make",
     dependencies = {
       "stevearc/dressing.nvim",
-      "github/copilot.vim"
     },
   },
 }
