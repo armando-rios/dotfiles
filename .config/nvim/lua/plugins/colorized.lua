@@ -1,6 +1,11 @@
 return {
-  'norcalli/nvim-colorizer.lua',
-  config = function()
-    require('colorizer').setup()
-  end
+  "catgoose/nvim-colorizer.lua",
+  event = "BufReadPre",
+  opts = {
+    user_default_options = {
+      mode = "background",
+      names = true,
+      tailwind = true,
+    },
+  },
 }
