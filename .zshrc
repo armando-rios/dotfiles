@@ -15,7 +15,6 @@ export LANG=en_US.UTF-8
 export EDITOR='nvim'
 
 # Aliases
-alias nvimtest='nvim -u ~/.config/nvim-test/init.lua'
 alias vi=nvim
 alias ls=lsd
 
