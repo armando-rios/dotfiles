@@ -1,0 +1,139 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "background_primary": "#111111",
+    "foreground_primary": "#f7f7f7",
+    "os_background": "#ff81cb",
+    "session_background": "#555555",
+    "git_background": "#ffffd6",
+    "node_foreground": "#3C873A",
+    "path_foreground": "#81ff91",
+    "status_error": "#ff3030",
+    "npm_icon_color": "#e21515",
+    "pnpm_icon_color": "#da6933",
+    "yarn_icon_color": "#348cba",
+    "bun_icon_color": "#ffffff",
+    "folder_separator": "#ffffd6"
+  },
+  "console_title_template": "{{if .Root}}[root] {{end}}{{.Shell}} in <{{.Folder}}>",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\u250c",
+          "foreground": "p:foreground_primary",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "linux": "\uf17c",
+            "macos": "\uf179",
+            "ubuntu": "\uf31b",
+            "windows": "\uee15"
+          },
+          "template": " {{ .Icon }} {{if .WSL}} (WSL){{end}} ",
+          "foreground": "p:background_primary",
+          "background": "p:os_background",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \udb80\udd8d {{.Name}} ",
+          "foreground": "p:background_primary",
+          "background": "p:foreground_primary",
+          "type": "shell",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \udb81\ude97 {{.HostName}} \ue0bd \uedc5 {{.UserName}} ",
+          "foreground": "p:foreground_primary",
+          "background": "p:session_background",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": " \uf113 \uf418 ",
+            "cache_duration": "none"
+          },
+          "template": "{{.HEAD}} ",
+          "foreground": "p:background_primary",
+          "background": "p:git_background",
+          "type": "git",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "fetch_package_manager": true,
+            "npm_icon": "<p:npm_icon_color>\ue5fa</>",
+            "pnpm_icon": "<p:pnpm_icon_color>\ue865</>",
+            "yarn_icon": "<p:yarn_icon_color>\ue6a7</>",
+            "bun_icon": "<p:bun_icon_color>\ue76f</>"
+          },
+          "template": " \ued0d {{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}{{ .Full }} ",
+          "foreground": "p:node_foreground",
+          "background": "transparent",
+          "type": "node",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "overflow": "break",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "folder_icon": "\uf07b",
+            "folder_separator_icon": " <p:folder_separator>\udb86\uddef </> ",
+            "home_icon": "\ueb06 ",
+            "style": "agnoster_full"
+          },
+          "template": "<p:foreground_primary>\u2514</><p:os_background>[</> {{ .Path }} <p:os_background>]</>",
+          "foreground": "p:path_foreground",
+          "type": "path",
+          "style": "powerline"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": "❯",
+          "foreground": "p:path_foreground",
+          "background": "transparent",
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": ["{{if gt .Code 0}}p:status_error{{end}}"]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
