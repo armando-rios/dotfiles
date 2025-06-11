@@ -7,7 +7,9 @@ return {
     terminal = {},
     lazygit = {},
     zen = {},
-    picker = {},
+    picker = {
+      ui_select = true,
+    },
     image = {},
     dashboard = {
       preset = {
@@ -119,7 +121,7 @@ return {
     { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
     { "<leader>:",       function() Snacks.picker.command_history() end,       desc = "Command History" },
     { "<leader>gn",      function() Snacks.picker.notifications() end,         desc = "Notification History" },
-    { "<leader>e",       function() Snacks.explorer() end,                     desc = "File Explorer" },
+    { "<leader>E",       function() Snacks.explorer() end,                     desc = "File Explorer" },
     -- find and grep
     { "<leader>fb",      function() Snacks.picker.buffers() end,               desc = "Buffers" },
     { "<leader>ff",      function() Snacks.picker.files() end,                 desc = "Find Files" },
