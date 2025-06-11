@@ -25,11 +25,22 @@ return {
 
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
-      local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
-      for type, icon in pairs(signs) do
-        local hl = "DiagnosticSign" .. type
-        vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-      end
+      vim.diagnostic.config({
+        signs = {
+          text = {
+            [vim.diagnostic.severity.ERROR] = " ",
+            [vim.diagnostic.severity.WARN] = " ",
+            [vim.diagnostic.severity.INFO] = " ",
+            [vim.diagnostic.severity.HINT] = "󰠠 ",
+          },
+          linehl = {
+            [vim.diagnostic.severity.ERROR] = "Error",
+            [vim.diagnostic.severity.WARN] = "Warn",
+            [vim.diagnostic.severity.INFO] = "Info",
+            [vim.diagnostic.severity.HINT] = "Hint",
+          },
+        },
+      })
 
       lspconfig["html"].setup({
         capabilities = capabilities,
@@ -175,16 +186,27 @@ return {
         markdown = { "markdownlint" },
         python = { "pylint" },
       }
-      local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
-      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-        group = lint_augroup,
-        callback = function()
-          lint.try_lint()
-        end,
-      })
+      vim.diagnostic.config({ virtual_text = true })
+      local lint_autogroup = vim.api.nvim_create_augroup("LintGroup", { clear = true })
+      -- vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+      --   group = lint_autogroup,
+      --   callback = function()
+      --     lint.try_lint()
+      --   end,
+      -- })
       vim.keymap.set("n", "<leader>l", function()
         lint.try_lint()
       end, { desc = "Trigger linting for current file" })
+
+      vim.keymap.set("n", "<leader>le", function()
+        vim.diagnostic.enable()
+        vim.notify("Linter enabled", vim.log.levels.INFO)
+      end, { desc = "Linter enabled" })
+
+      vim.keymap.set("n", "<leader>ld", function()
+        vim.diagnostic.disable()
+        vim.notify("Linter enabled", vim.log.levels.INFO)
+      end, { desc = "Linter disabled" })
     end,
   },
 }
