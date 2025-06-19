@@ -4,7 +4,18 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     build = ":TSUpdate",
     dependencies = {
-      "windwp/nvim-ts-autotag",
+      {
+        "windwp/nvim-ts-autotag",
+        ft = {
+          "javascript",
+          "javascriptreact",
+          "typescript",
+          "typescriptreact",
+        },
+        config = function()
+          require("nvim-ts-autotag").setup()
+        end,
+      },
     },
     config = function()
       -- import nvim-treesitter plugin
@@ -30,6 +41,7 @@ return {
           "typescript",
           "yaml",
           "html",
+          "tsx",
           "css",
           "markdown",
           "markdown_inline",
