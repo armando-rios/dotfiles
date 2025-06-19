@@ -188,12 +188,12 @@ return {
       }
       vim.diagnostic.config({ virtual_text = true })
       local lint_autogroup = vim.api.nvim_create_augroup("LintGroup", { clear = true })
-      -- vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
-      --   group = lint_autogroup,
-      --   callback = function()
-      --     lint.try_lint()
-      --   end,
-      -- })
+      vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+        group = lint_autogroup,
+        callback = function()
+          lint.try_lint()
+        end,
+      })
       vim.keymap.set("n", "<leader>l", function()
         lint.try_lint()
       end, { desc = "Trigger linting for current file" })
