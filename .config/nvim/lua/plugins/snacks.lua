@@ -8,7 +8,17 @@ return {
     lazygit = {},
     zen = {},
     picker = {
+      exclude = {
+        ".git",
+        "/node_modules",
+      },
       ui_select = true,
+      matcher = {
+        fuzzy = true,
+        smartcase = true,
+        ignorecase = true,
+        filename_bonus = true,
+      }
     },
     image = {},
     dashboard = {
