@@ -47,7 +47,7 @@ return {
         filetypes = { "html", "htm" }, -- Solo activado para archivos HTML
       })
 
-      lspconfig["ts_ls"].setup({
+      lspconfig["vtsls"].setup({
         capabilities = capabilities,
         filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Solo para archivos TypeScript y JavaScript
       })
