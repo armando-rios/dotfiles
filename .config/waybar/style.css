@@ -3,126 +3,65 @@
 * {
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 window#waybar {
-  background: @base;
+  background: transparent;
   color: @text;
-  /* border: 2px solid @crust; */
-  border: 2px solid @mantle;
-  border-radius: 8px;
-}
-
-#workspaces {
-  /* background: rgba(23, 23, 23, 0.0); */
-  color: #888789;
-  box-shadow: none;
-  text-shadow: none;
-  transition: 0.2s ease;
-  padding-left: 4px;
-  padding-right: 4px;
-  padding-top: 1px;
 }
 
 #workspaces button {
-  /* background: rgba(23, 23, 23, 0.0); */
-  color: #a6e3a1;
-  box-shadow: none;
-  border: none;
-  text-shadow: none;
-  transition: 0.2s ease;
+  color: @green;
+  transition: 0.5s ease-in-out;
   padding-left: 4px;
   padding-right: 4px;
-  /*   animation: ws_normal 20s ease-in-out 1; */
 }
 
 #workspaces button.active {
-  color: #cba6f7;
-  transition: all 0.3s ease;
+  color: @red;
+  transition: 1s ease;
   padding-left: 4px;
   padding-right: 4px;
-  /*  transition: all 0.4s cubic-bezier(.55,0.68,.48,1.682); */
 }
 
-#workspaces button:hover {
-  background: none;
-  color: #cba6f7;
-  animation: ws_hover 20s ease-in-out 1;
-  transition: all 0.5s cubic-bezier(0.55, -0.68, 0.48, 1.682);
-}
-
-#mpris {
-  color: white;
-  animation: repeat;
-  animation-name: blink;
-  animation-duration: 3s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-}
-
-#pulseaudio-slider slider {
-  background: #a1bdce;
-  box-shadow: none;
-  margin-right: 5px;
-}
-
-#backlight-slider trough,
-#pulseaudio-slider trough {
-  min-width: 90px;
-  min-height: 10px;
-  border-radius: 8px;
-  background-color: @overlay0;
-}
-
-#backlight-slider highlight,
-#pulseaudio-slider highlight {
-  border-radius: 8px;
-  background-color: @green;
-}
-
-#network {
-  color: @peach;
-}
-
-#battery {
-  color: @sky;
-  margin: 0 5px;
-}
-
-#pulseaudio {
-  color: @green;
+#clock {
+  color: #ffffff;
+  font-weight: bold;
   margin: 0 5px;
 }
 
 #backlight {
-  color: @teal;
+  font-weight: bold;
   margin: 0 5px;
 }
 
-#cpu {
-  color: @red;
+#pulseaudio {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+#battery {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
+#network {
+  font-weight: bold;
   margin: 0 5px;
 }
 
 #memory {
-  color: @blue;
+  font-weight: bold;
   margin: 0 5px;
 }
 
-#clock {
-  color: @pink;
-  padding: 0 8px 0 0;
+#cpu {
+  font-weight: bold;
   margin: 0 5px;
 }
 
-#custom-power {
-  color: @mauve;
-  background: transparent;
-  margin: 0 5px 0 0;
-}
-
-#custom-menu {
+#power {
+  font-weight: bold;
   margin: 0 5px;
 }
