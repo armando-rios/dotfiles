@@ -34,7 +34,7 @@
     "device": "intel_backlight",
     "format": "{icon}",
     "format-icons": [
-      " ", " ", " ", " ", " ", " ", " ", " ", " "
+      "", "", "", "", "", "", "", "", ""
     ]
   },
 
@@ -51,7 +51,7 @@
       "phone": "",
       "portable": "",
       "car": "",
-      "default": " "
+      "default": ["󰕿", "󰖀", "󰕾"]
     },
     "on-click": "pavucontrol &"
   },
