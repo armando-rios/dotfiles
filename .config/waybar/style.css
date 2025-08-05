@@ -3,7 +3,7 @@
 * {
   font-family: "JetBrains Mono Nerd Font";
   font-weight: bold;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 window#waybar {
@@ -12,56 +12,67 @@ window#waybar {
 }
 
 #workspaces button {
-  color: @green;
+  color: @lavender;
   transition: 0.5s ease-in-out;
   padding-left: 4px;
   padding-right: 4px;
 }
 
 #workspaces button.active {
-  color: @red;
+  color: @maroon;
   transition: 1s ease;
   padding-left: 4px;
   padding-right: 4px;
 }
 
+#custom-menu {
+  font-weight: bold;
+  margin: 0 5px;
+}
+
 #clock {
-  color: #ffffff;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #backlight {
+  color: @green;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #pulseaudio {
+  color: @green;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #battery {
+  color: @sky;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #network {
+  color: @peach;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #memory {
+  color: @blue;
   font-weight: bold;
   margin: 0 5px;
 }
 
 #cpu {
+  color: @red;
   font-weight: bold;
   margin: 0 5px;
 }
 
-#power {
+#custom-power {
+  color: @mauve;
   font-weight: bold;
   margin: 0 5px;
 }
