@@ -116,6 +116,6 @@
 
   "custom/power": {
     "on-click": "poweroff",
-    "format": "  "
+    "format": ""
   },
 }
