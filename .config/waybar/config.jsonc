@@ -8,7 +8,17 @@
     
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["group/expand", "battery", "network", "memory", "cpu", "custom/power"],
+  "modules-right": ["group/system", "group/expand", "battery", "network", "memory", "cpu", "custom/power"],
+
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true
+    },
+    "modules": ["custom/menu", "tray"]
+  },
 
   "group/expand": {
     "orientation": "horizontal",
@@ -28,6 +38,17 @@
     },
     "sort-by-number": true
   },
+
+  "custom/menu":{
+    "format": ""
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "rotate": 0,
+    "spacing": 3
+  },
+
 
   "clock": {
     "format": "{:%H:%M}"
