@@ -8,7 +8,7 @@ title = "Terminal"
 
 normal = { family = "JetBrainsMonoNerdFont", style = "Normal" }
 # set font size
-size = 16
+size = 12
 
 # catppuccin theme
 [colors.primary]
