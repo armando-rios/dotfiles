@@ -1,14 +1,22 @@
 {
   // source from header module
-  "layer": "top", 
-  "position": "top", 
+  "layer": "top",
+  "position": "top",
   "margin-left": 10,
   "margin-right": 10,
   "reload_style_on_change": true,
-    
+
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["clock"],
-  "modules-right": ["group/system", "group/expand", "battery", "network", "memory", "cpu", "custom/power"],
+  "modules-right": [
+    "group/system",
+    "group/expand",
+    "battery",
+    "network",
+    "memory",
+    "cpu",
+    "custom/power"
+  ],
 
   "group/system": {
     "orientation": "horizontal",
@@ -29,17 +37,17 @@
     "format": "{icon}",
     "on-click": "activate",
     "format-icons": {
-      // "urgent": "",
-      // "active": "󰅶",
-      // "default": "󰛊"
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "urgent": "",
+      "active": "󰅶",
+      "default": "󰛊"
+      // "urgent": "",
+      // "active": "",
+      // "default": ""
     },
     "sort-by-number": true
   },
 
-  "custom/menu":{
+  "custom/menu": {
     "format": ""
   },
 
@@ -49,7 +57,6 @@
     "spacing": 3
   },
 
-
   "clock": {
     "format": "{:%H:%M}"
   },
@@ -57,9 +64,7 @@
   "backlight": {
     "device": "intel_backlight",
     "format": "{icon}",
-    "format-icons": [
-      "", "", "", "", "", "", "", "", ""
-    ]
+    "format-icons": ["", "", "", "", "", "", "", "", ""]
   },
 
   "pulseaudio": {
@@ -117,5 +122,5 @@
   "custom/power": {
     "on-click": "poweroff",
     "format": ""
-  },
+  }
 }
