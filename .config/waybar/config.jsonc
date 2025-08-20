@@ -1,0 +1,121 @@
+{
+  // source from header module
+  "layer": "top", 
+  "position": "top", 
+  "margin-left": 10,
+  "margin-right": 10,
+  "reload_style_on_change": true,
+    
+  "modules-left": ["hyprland/workspaces"],
+  "modules-center": ["clock"],
+  "modules-right": ["group/system", "group/expand", "battery", "network", "memory", "cpu", "custom/power"],
+
+  "group/system": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 600,
+      "children-class": "not-power",
+      "transition-to-left": true
+    },
+    "modules": ["custom/menu", "tray"]
+  },
+
+  "group/expand": {
+    "orientation": "horizontal",
+    "modules": ["backlight", "pulseaudio"]
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      // "urgent": "",
+      // "active": "󰅶",
+      // "default": "󰛊"
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "sort-by-number": true
+  },
+
+  "custom/menu":{
+    "format": ""
+  },
+
+  "tray": {
+    "icon-size": 16,
+    "rotate": 0,
+    "spacing": 3
+  },
+
+
+  "clock": {
+    "format": "{:%H:%M}"
+  },
+
+  "backlight": {
+    "device": "intel_backlight",
+    "format": "{icon}",
+    "format-icons": [
+      "", "", "", "", "", "", "", "", ""
+    ]
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "rotate": 0,
+    "format-muted": "婢",
+    "tooltip-format": "{icon} {desc} // {volume}%",
+    "scroll-step": 5,
+    "format-icons": {
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
+      "phone": "",
+      "portable": "",
+      "car": "",
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol &"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon}",
+    "format-charging": "󰂄",
+    "format-plugged": "󰂃",
+    "format-alt": "{icon}",
+    "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "network": {
+    "tooltip": true,
+    "format-wifi": "󰘊",
+    "format-ethernet": "󰈀",
+    "tooltip-format": "Network: <b>{essid}</b>\nSignal strength: <b>{signaldBm}dBm ({signalStrength}%)</b>\nFrequency: <b>{frequency}MHz</b>\nInterface: <b>{ifname}</b>\nIP: <b>{ipaddr}/{cidr}</b>\nGateway: <b>{gwaddr}</b>\nNetmask: <b>{netmask}</b>",
+    "format-linked": "󰈀 {ifname} (No IP)",
+    "format-disconnected": "",
+    "tooltip-format-disconnected": "Disconnected",
+    "on-click": "nm-connection-editor &",
+    "interval": 10
+  },
+
+  "memory": {
+    "interval": 1,
+    "format": " {}%"
+  },
+
+  "cpu": {
+    "interval": 10,
+    "format": " {}%"
+  },
+
+  "custom/power": {
+    "on-click": "poweroff",
+    "format": ""
+  },
+}

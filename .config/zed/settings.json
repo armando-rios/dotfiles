@@ -1,6 +1,32 @@
 // Zed settings
 {
+  "edit_predictions": {
+    "disabled_globs": [
+      "**/node_modules/**",
+      "**/vendor/**",
+      "**/dist/**",
+      "**/build/**",
+      "**/.git/**",
+      "**/.svn/**",
+      "**/.hg/**",
+      "**/.bzr/**"
+    ],
+    "mode": "eager",
+    "enabled_in_text_threads": false
+  },
   "agent": {
+    "dock": "right",
+    "commit_message_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "inline_assistant_model": {
+      "provider": "copilot_chat",
+      "model": "gpt-4o"
+    },
+    "preferred_completion_mode": "normal",
+    "profiles": {},
+    "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
       "provider": "copilot_chat",
@@ -16,7 +42,6 @@
   "vim": {
     "use_system_clipboard": "always"
   },
-  "ui_font_family": "JetBrainsMono Nerd Font",
   "title_bar": {
     "show_sign_in": false,
     "show_project_items": false,
@@ -27,14 +52,23 @@
     // "show": false,
     // "show_tab_bar_buttons": false
   },
-  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "ui_font_size": 14,
+  "agent_font_size": 14,
+  "buffer_font_size": 12,
   "relative_line_numbers": true,
-  "ui_font_size": 18,
-  "buffer_font_size": 18,
+  "tab_size": 2,
   "theme": "Catppuccin Mocha Blur",
+  "icon_theme": "Catppuccin Mocha",
+  "ui_font_family": "JetBrainsMono Nerd Font",
+  "buffer_font_family": "JetBrainsMono Nerd Font",
+  "profiles": {},
   "diagnostics": {
     "inline": {
       "enabled": true
     }
+  },
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
   }
 }
