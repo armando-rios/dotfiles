@@ -127,8 +127,6 @@ return {
           "graphql",
           "astro",
           "marksman",
-          "eslint_d",
-          "prettier"
         },
         automatic_installation = true,
       })
