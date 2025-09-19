@@ -61,7 +61,7 @@ return {
       },
     },
 
-    dependencies = { { "echasnovski/mini.nvim", opts = {} } },
+    dependencies = { { "nvim-mini/mini.nvim", opts = {} } },
     lazy = false,
   },
 }
