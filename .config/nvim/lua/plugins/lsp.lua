@@ -19,11 +19,18 @@ return {
       }
     },
     config = function()
-      local lspconfig = require("lspconfig")
+      -- local lspconfig = require("lspconfig")
 
       local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
       local capabilities = cmp_nvim_lsp.default_capabilities()
+
+      local function setup_lsp(server, opts)
+        local config = vim.tbl_deep_extend("force", {
+          capabilities = capabilities
+        }, opts or {})
+        vim.lsp.config(server, config)
+      end
 
       vim.diagnostic.config({
         signs = {
@@ -42,40 +49,11 @@ return {
         },
       })
 
-      lspconfig["html"].setup({
+      setup_lsp("vtsls", {
         capabilities = capabilities,
-        filetypes = { "html", "htm" }, -- Solo activado para archivos HTML
+        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
       })
-
-      lspconfig["vtsls"].setup({
-        capabilities = capabilities,
-        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" }, -- Solo para archivos TypeScript y JavaScript
-      })
-
-      lspconfig["astro"].setup({
-        capabilities = capabilities,
-        filetypes = { "astro" }, -- Solo activado para archivos Astro
-        init_options = {
-          typescript = {},
-        },
-      })
-
-      lspconfig["tailwindcss"].setup({
-        capabilities = capabilities,
-        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }, -- Solo para archivos relacionados con Tailwind
-      })
-
-      lspconfig["cssls"].setup({
-        capabilities = capabilities,
-        filetypes = { "css", "scss", "less" }, -- Solo activado para archivos CSS, SCSS y LESS
-      })
-
-      lspconfig["marksman"].setup({
-        capabilities = capabilities,
-        filetypes = { "markdown" }, -- Solo para archivos Markdown
-      })
-
-      lspconfig["lua_ls"].setup({
+      setup_lsp("lua_ls", {
         capabilities = capabilities,
         settings = {
           Lua = {
@@ -93,6 +71,34 @@ return {
           },
         },
         filetypes = { "lua" }, -- Solo activado para archivos Lua
+      })
+
+      setup_lsp("html", {
+        capabilities = capabilities,
+        filetypes = { "html", "htm" }, -- Solo activado para archivos HTML
+      })
+
+      setup_lsp("astro", {
+        capabilities = capabilities,
+        filetypes = { "astro" }, -- Solo activado para archivos Astro
+        init_options = {
+          typescript = {},
+        },
+      })
+
+      setup_lsp("tailwindcss", {
+        capabilities = capabilities,
+        filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" }, -- Solo para archivos relacionados con Tailwind
+      })
+
+      setup_lsp("cssls", {
+        capabilities = capabilities,
+        filetypes = { "css", "scss", "less" }, -- Solo activado para archivos CSS, SCSS y LESS
+      })
+
+      setup_lsp("marksman", {
+        capabilities = capabilities,
+        filetypes = { "markdown" }, -- Solo para archivos Markdown
       })
     end,
   },
