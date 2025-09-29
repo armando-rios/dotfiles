@@ -2,7 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="half-life"
 
-plugins=(zoxide git)
+# Plugins
+plugins=(zoxide git vi-mode)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -17,6 +18,10 @@ alias vi=nvim
 alias ls=lsd
 alias zed="zeditor ."
 
+# Vi mode
+set -o vi
+
+# git clone from github
 gcr() {
     local user="armando-rios"  # Cambia esto si usas otro usuario
 
@@ -26,13 +31,15 @@ gcr() {
         echo "Uso: gcl <repositorio>"
     fi
 }
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# nvm setup
 source /usr/share/nvm/init-nvm.sh
-# export NVM_DIR="$HOME/.nvm"
-# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH=$HOME/.local/bin:$PATH
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+# bun completions
+[ -s "/home/rios/.bun/_bun" ] && source "/home/rios/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
