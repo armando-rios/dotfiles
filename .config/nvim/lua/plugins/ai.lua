@@ -7,13 +7,15 @@ return {
   {
     'github/copilot.vim',
     -- functions to enable/disable copilot
-    map("n", "<leader>ce", function()
-      vim.g.copilot_enabled = true
-      vim.notify("Copilot enabled")
-    end, { desc = "Enable Copilot"}),
-    map("n", "<leader>cd", function()
-      vim.g.copilot_enabled = false
-      vim.notify("Copilot disabled")
-    end, { desc = "Disable Copilot"})
+    config = function()
+      map("n", "<leader>ce", function()
+        vim.g.copilot_enabled = true
+        vim.notify("Copilot enabled")
+      end, { desc = "Enable Copilot"})
+      map("n", "<leader>cd", function()
+        vim.g.copilot_enabled = false
+        vim.notify("Copilot disabled")
+      end, { desc = "Disable Copilot"})
+    end
   }
 }
