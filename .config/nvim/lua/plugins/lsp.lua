@@ -23,13 +23,15 @@ return {
 
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
+      local lspconfig = require("lspconfig")
+      
       local function setup_lsp_servers(servers)
         for server, config in pairs(servers) do
           local opts = vim.tbl_deep_extend("force", {
             capabilities = capabilities,
           }, config)
 
-          vim.lsp.config(server, opts)
+          lspconfig[server].setup(opts)
         end
       end
 
