@@ -24,7 +24,7 @@ return {
       local capabilities = cmp_nvim_lsp.default_capabilities()
 
       local lspconfig = require("lspconfig")
-      
+
       local function setup_lsp_servers(servers)
         for server, config in pairs(servers) do
           local opts = vim.tbl_deep_extend("force", {
@@ -66,7 +66,7 @@ return {
           filetypes = { "css", "scss", "less" },
         },
         tailwindcss = {
-          filetypes = { "css", "scss", "less" },
+          filetypes = { "html", "css", "javascript", "typescript", "javascriptreact", "typescriptreact", "astro" },
         },
         marksman = {
           filetypes = { "markdown" },
