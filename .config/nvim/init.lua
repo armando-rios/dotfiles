@@ -18,6 +18,7 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
     { import = "plugins.lang" },
+    { import = "plugins.editor" }
   },
   install = { colorscheme = { "cattpuccin" } },
   checker = { enabled = false },
