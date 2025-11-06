@@ -62,34 +62,4 @@ return {
       vim.cmd.colorscheme("catppuccin")
     end,
   },
-  {
-    "nvim-lualine/lualine.nvim",
-    config = function()
-      require("lualine").setup({
-        options = {
-          theme = "auto",
-        },
-      })
-    end,
-  },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      -- cmdline = {
-      --   view = "cmdline",
-      -- }
-      messages = {
-        enabled = true,
-        view = "notify",
-        view_error = "notify",
-        view_warn = "notify",
-        view_history = "messages",
-        view_search = "virtualtext",
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-    }
-  },
 }

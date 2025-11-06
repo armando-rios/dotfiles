@@ -16,7 +16,11 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
-    { import = "plugins" }
+    { import = "plugins" },
+    { import = "plugins.lang" },
+    { import = "plugins.editor" },
+    { import = "plugins.ui" },
+    { import = "plugins.ai" }
   },
   install = { colorscheme = { "cattpuccin" } },
   checker = { enabled = false },
@@ -25,3 +29,4 @@ require("lazy").setup({
 -- Load basic configs
 require("config.options")
 require("config.keymaps")
+require("config.diagnostics")
