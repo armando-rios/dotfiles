@@ -29,3 +29,4 @@ require("lazy").setup({
 -- Load basic configs
 require("config.options")
 require("config.keymaps")
+require("config.diagnostics")
